@@ -14,6 +14,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="Fitxer">
                <items>
+                  <MenuItem fx:id="obrirItem" mnemonicParsing="false" onAction="#obrir" text="Obrir" />
+                  <MenuItem fx:id="guardarItem" mnemonicParsing="false" onAction="#guardar" text="Guardar" />
                   <MenuItem fx:id="fitxerSortir" mnemonicParsing="false" onAction="#sortir" text="Sortir" />
                </items>
           </Menu>

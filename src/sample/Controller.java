@@ -9,6 +9,12 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 
 public class Controller {
@@ -84,5 +90,49 @@ public class Controller {
         alert.setHeaderText("Look, an Information Dialog");
         alert.setContentText("I have a great message for you!");
         alert.showAndWait();
+    }
+
+    public void guardar(ActionEvent actionEvent) {
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Guardar Arxiu");
+
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Axius", ".txt"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+
+        Stage mainStage = new Stage();
+
+        File selectedFile = chooser.showSaveDialog(mainStage);
+
+        try{
+
+        }
+        catch(){
+
+        }
+        catch(FileNotFoundException a){}
+        catch (IOException b){}
+    }
+
+    public void obrir(ActionEvent actionEvent) {
+
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Obrir arxiu");
+
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Axius", ".txt"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+
+        Stage mainStage = new Stage();
+
+        File selectedFile = chooser.showOpenDialog(mainStage);
+
+        try{
+
+        }
+        catch(FileNotFoundException a){}
+        catch (IOException b){}
+
     }
 }
