@@ -12,9 +12,7 @@ import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 
 public class Controller {
@@ -92,7 +90,7 @@ public class Controller {
         alert.showAndWait();
     }
 
-    public void guardar(ActionEvent actionEvent) {
+    public void guardar(ActionEvent actionEvent) throws IOException {
 
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Guardar Arxiu");
@@ -103,36 +101,44 @@ public class Controller {
 
         Stage mainStage = new Stage();
 
-        File selectedFile = chooser.showSaveDialog(mainStage);
+        File selectedFile = chooser.showOpenDialog(mainStage);  //selectedFile será el archivo que escojamos en el dialog
 
-        try{
+        chooser.setTitle(selectedFile.getName()); // El nombre la pantalla cambiará al del archivo
+
+        if(!selectedFile.exists()){     //Si el archivo no existe que lo cree
 
         }
-        catch(){
 
-        }
-        catch(FileNotFoundException a){}
-        catch (IOException b){}
+        BufferedWriter bw = new BufferedWriter(new FileWriter(selectedFile));
+        bw.write(texto.getText());  //Leemos el texto del archivo seleccionado y lo aplicamos a nuestro programa y cerramos
+        bw.close();
     }
 
     public void obrir(ActionEvent actionEvent) {
 
-        FileChooser chooser = new FileChooser();
-        chooser.setTitle("Obrir arxiu");
+        FileChooser chooser = new FileChooser();    //Creamos el dialog
+        chooser.setTitle("Obrir arxiu");            //Con el nombre setArxiu
 
-        chooser.getExtensionFilters().addAll(
+        chooser.getExtensionFilters().addAll(   //Definimos los archivos que ha de leer
                 new FileChooser.ExtensionFilter("Axius", ".txt"),
                 new FileChooser.ExtensionFilter("All Files", "*.*"));
 
-        Stage mainStage = new Stage();
-
-        File selectedFile = chooser.showOpenDialog(mainStage);
+        Stage mainStage = new Stage();  //Creamos el main stage
 
         try{
+            File selectedFile = chooser.showOpenDialog(mainStage);  //selectedFile será el archivo que escojamos en el dialog
 
+
+            // Main.getPrimaryStage().setTitle(selectedFile.getName()); // El nombre la pantalla cambiará al del archivo
+
+            String linea = null;
+            BufferedReader br = new BufferedReader(new FileReader(selectedFile));
+
+            while ((linea = br.readLine()) != null) {
+                texto.setText(texto.getText() + linea + "\n");  //Escribimos el texto en el archivo que seleccionamos en el dialog
+            }
         }
         catch(FileNotFoundException a){}
         catch (IOException b){}
-
     }
 }

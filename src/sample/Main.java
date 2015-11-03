@@ -6,7 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
+
+    private static Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -19,5 +22,16 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    //Getter
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    //Setter
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 }
