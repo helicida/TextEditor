@@ -105,9 +105,10 @@ public class Controller {
 
         chooser.setTitle(selectedFile.getName()); // El nombre la pantalla cambiará al del archivo
 
-        if(!selectedFile.exists()){     //Si el archivo no existe que lo cree
-
-        }
+        /*
+        if(!selectedFile.exists()){     //Si el archivo no existe que lo cree. Codi per a futura ampliació
+            CrearFitxer.crea(selectedFile);
+        }*/
 
         BufferedWriter bw = new BufferedWriter(new FileWriter(selectedFile));
         bw.write(texto.getText());  //Leemos el texto del archivo seleccionado y lo aplicamos a nuestro programa y cerramos
@@ -129,8 +130,6 @@ public class Controller {
             File selectedFile = chooser.showOpenDialog(mainStage);  //selectedFile será el archivo que escojamos en el dialog
 
             setStageTitle(selectedFile.getName());
-
-
 
             String linea = null;
             BufferedReader br = new BufferedReader(new FileReader(selectedFile));
