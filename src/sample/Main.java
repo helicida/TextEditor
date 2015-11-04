@@ -9,10 +9,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private static Stage primaryStage;
+    private static Stage stage; // Variable auxiliar para cambiar el nombre
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        stage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Super Mega Editor de TEXT");
         primaryStage.setScene(new Scene(root, 500, 400));
@@ -26,12 +27,7 @@ public class Main extends Application {
 
     //Getter
 
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
-
-    //Setter
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
+    public static Stage getStage() {
+        return stage;
     }
 }

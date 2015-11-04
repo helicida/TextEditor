@@ -128,8 +128,9 @@ public class Controller {
         try{
             File selectedFile = chooser.showOpenDialog(mainStage);  //selectedFile será el archivo que escojamos en el dialog
 
+            setStageTitle(selectedFile.getName());
 
-            // Main.getPrimaryStage().setTitle(selectedFile.getName()); // El nombre la pantalla cambiará al del archivo
+
 
             String linea = null;
             BufferedReader br = new BufferedReader(new FileReader(selectedFile));
@@ -141,4 +142,9 @@ public class Controller {
         catch(FileNotFoundException a){}
         catch (IOException b){}
     }
+
+    public void setStageTitle(String newTitle){ // Método que nos cambiara el stage en el Main controller
+        Main.getStage().setTitle(newTitle + " | Super MEGA Text Editor"); // Es necesario porque no se puede referenciar en un contexto éstatico directamente
+    }
+
 }
